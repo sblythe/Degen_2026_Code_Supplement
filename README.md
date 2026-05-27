@@ -13,6 +13,6 @@ MATLAB R2022a was used in the writing and running of all scripts. All scripts ca
 ## Figure 2C & C'
 These plots present the maternal and paternal H3K27 methylation stimulation results for the primary model discussed in the main text. To generate them, you will need to run the following scripts:
 
-'''testing'''
-'testing'
-'''**testing**'''
+`testing`
+```testing```
+```**testing**```
