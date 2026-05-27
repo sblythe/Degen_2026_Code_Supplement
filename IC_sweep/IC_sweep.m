@@ -2,11 +2,11 @@
 clearvars
 
 % load ez and pho concentration dynamics
-load('.../Ez_Pho_concentrations/ez_dynamics.mat')
-load('.../Ez_Pho_concentrations/pho_dynamics.mat')
+load('~/Ez_Pho_concentrations/ez_dynamics.mat')
+load('~/Ez_Pho_concentrations/pho_dynamics.mat')
 
 % load ez and pho nM estimates at NC14
-load('.../Ez_Pho_concentrations/EzPho_conc_nM.mat')
+load('~/Ez_Pho_concentrations/EzPho_conc_nM.mat')
 
 % define parameters
 params = struct;

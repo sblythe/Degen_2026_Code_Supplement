@@ -1,16 +1,19 @@
+
+
  clearvars
 
  % load ez and pho concentration dynamics
- load('~/Ez_Pho_concentrations/ez_dynamics.mat') 
- load('~/Ez_Pho_concentrations/pho_dynamics.mat') 
+ load('~/Ez_Pho_concentrations/ez_dynamics.mat')
+ load('~/Ez_Pho_concentrations/pho_dynamics.mat')
 
  % load ez and pho nM estimates at NC14
- load('~/Ez_Pho_concentrations/EzPho_conc_nM.mat') 
- 
- %% Run 100x simulations for Fig. 2 of Degen et al., 2026
- close all
+ load('~/Ez_Pho_concentrations/EzPho_conc_nM.mat')
 
+%% Run V sweep
+
+ % define parameters
  params = struct;
+ params.numSims = 10; % For the paper, numSims = 10
  params.nNucleosomes = 300;
  params.stepsPerMin = 4;
  params.deltaT = 1; % 1 time step = 15 sec
@@ -24,41 +27,34 @@
  params.allo_2 = 3;
  params.ez = ez;
  params.pho = pho;
- params.constantPho_nM = conc_nM.Pho;
- params.V = 7.3500e-04; % V = 7.3500e-04 for the revised paper, based on V_sweep_final_19-Mar-2026 12:06:47
- params.numSims = 100; % n = 100 for paper
-
- 
- % Maternal IC
  params.hitRun = 0;
- params.fiberIC = [2*ones(2,params.nNucleosomes*0.2) 3*ones(2,params.nNucleosomes*0.8)]; % maternal IC
- [simArray rxnsPerTimestep] = simulateK27(ez,pho,params);
- plotSimulation(simArray,params,'Maternal')
 
- newDirectory = 'path to folder to save maternal simulation results' ...
-     + string(datetime) + '_mat';
- mkdir(newDirectory)
- save(newDirectory+'/params.mat','params')
- save(newDirectory+'/simArray.mat','simArray', '-v7.3')
- save(newDirectory+'/rxnsPerTimestep.mat','rxnsPerTimestep', '-v7.3')
+ sweepDir = 'path to folder to save V sweep results'+string(datetime);
+ mkdir(sweepDir)
 
- % Paternal IC
- params.hitRun = 0;
- params.fiberIC = [0*ones(2,params.nNucleosomes)]; % paternal IC
- [simArray rxnsPerTimestep] = simulateK27(ez,pho,params);
- plotSimulation(simArray,params,'Paternal')
+ V_vals = 0.0004:0.00001:0.0012;
+ simArrays = cell(length(V_vals),1);
+ for i = 1:length(V_vals)
 
- newDirectory = 'path to folder to save paternal simulation results'...
-     + string(datetime) + '_pat';
- mkdir(newDirectory)
- save(newDirectory+'/params.mat','params')
- save(newDirectory+'/simArray.mat','simArray', '-v7.3')
- save(newDirectory+'/rxnsPerTimestep.mat','rxnsPerTimestep', '-v7.3')
+     params.V = V_vals(i); % for the paper
 
+     % Maternal IC, dynamic Pho
+     params.fiberIC = [2*ones(2,params.nNucleosomes*0.2) 3*ones(2,params.nNucleosomes*0.8)]; % maternal IC
+     [simArray rxnsPerTimestep] = simulateK27(ez,pho,params);
+     plotSimulation(simArray,params,'maternal, V = '+string(V_vals(i)))
+
+     simArrays{i} = simArray;
+
+ end
+
+ save(strcat(sweepDir,'/simArrays.mat'),'simArrays','-v7.3')
+ save(strcat(sweepDir,'/V_vals.mat'),'V_vals')
+ save(strcat(sweepDir,'/params.mat'),'params')
 
  %% Functions
 
 function plotSimulation(simArray,params,titleString)
+close all
 
     tMit = params.tMit;
     stepsPerMin = params.stepsPerMin;

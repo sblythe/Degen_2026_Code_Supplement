@@ -1,13 +1,13 @@
 
 % Load maternal and paternal simulation results (that were saved by running simulate_K27me_final.m)
-load('.../22-Mar-2026 18:40:31_mat/simArray.mat')
+load('~/22-Mar-2026 18:40:31_mat/simArray.mat')
 mat_sim = simArray;
 
-load('.../22-Mar-2026 18:41:58_pat/simArray.mat')
+load('~/22-Mar-2026 18:41:58_pat/simArray.mat')
 pat_sim = simArray;
 
 % Load parameters used to run simulations (should be the same for mat/pat simulations)
-load('.../22-Mar-2026 18:40:31_mat/params.mat')
+load('~/22-Mar-2026 18:40:31_mat/params.mat')
 
 %% Plot and save simulation results (Fig. 2C & C' of Degen et al., 2026)
 close all

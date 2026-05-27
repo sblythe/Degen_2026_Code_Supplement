@@ -1,14 +1,14 @@
 clearvars
 
 % Load target data
-load('.../ChIP_data_for_fitting/ChIPseq_NC14_maxes_3.mat') % me3 max ChIP signal
+load('~/ChIP_data_for_fitting/ChIPseq_NC14_maxes_3.mat') % me3 max ChIP signal
 maxes_3 = maxes;
-load('.../ChIP_data_for_fitting/ChIPseq_NC14_mins_1.mat') % me1 min ChIP signal
+load('~/ChIP_data_for_fitting/ChIPseq_NC14_mins_1.mat') % me1 min ChIP signal
 mins_1 = mins;
 
 % Load V sweep data
-load('.../V_sweep/V_sweep_final_19-Mar-2026 12:06:47/V_vals.mat')
-load('.../V_sweep/V_sweep_final_19-Mar-2026 12:06:47/simArrays.mat')
+load('~/V_sweep/V_sweep_final_19-Mar-2026 12:06:47/V_vals.mat')
+load('~/V_sweep/V_sweep_final_19-Mar-2026 12:06:47/simArrays.mat')
 
 %% Compare simulation results with target data
 
