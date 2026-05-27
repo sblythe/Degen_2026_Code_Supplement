@@ -16,8 +16,8 @@ Scripts that run simulations call the functions in `~/simulationFunctions/`. You
 ## Fig. 2C & C'
 These plots present the maternal and paternal H3K27 methylation stimulation results for the primary model discussed in the main text. To generate them, you will need to run the following scripts:
 
-- **`simulate_K27me_final.m`** loads the E(z) and Pho concentration estimates required for running the simulations, runs maternal and paternal H3K27 methylation simulations by calling **`simulateK27.m`**, and then plots and saves the simulation results.
-- **`plot_100xSimResults.m`** loads the simulation results produced by **`simulate_K27me3_final.m`** in the first code block (right now, the script loads the simulation results in `~/22-Mar-2026 18:40:31_mat/` and `~/22-Mar-2026 18:41:58_pat/`, the ones used for the paper but can be recreated), and in the second code block, creates the plots of Fig. 2C & C'. Note: the third code chunk is related to Fig. 2D, as discussed below.
+- **`simulate_K27me_final.m`** loads the E(z) and Pho concentration estimates required for running the simulations, runs maternal and paternal H3K27 methylation simulations by calling **`simulateK27.m`**, and then plots and saves the results.
+- **`plot_100xSimResults.m`** loads the results produced by **`simulate_K27me3_final.m`** in the first code block (right now, the script loads the simulation results stored in `~/22-Mar-2026 18:40:31_mat/` and `~/22-Mar-2026 18:41:58_pat/`, the ones used for the paper but can be recreated), and in the second code block, creates the plots of Fig. 2C & C'. Note: the third code chunk is related to Fig. 2D, as discussed below.
 
 ## Fig. 2D, Fig. SM7 A, Fig. SM7 B
 These plots show the maternal vs. paternal contributions to H3K27me1 (Fig. SM7 A of Modeling Supplement), H3K27me2 (Fig. SM7 B of Modeling Supplement), and H3K27me3 (Fig. 2D of main text). 
