@@ -3,7 +3,7 @@ This repository includes the code used in Degen et al., 2026 for running H3K27 m
 
 Instructions on how to reproduce the modeling-related results presented in the main text and Modeling Supplement are included in this document.
 
-Please contact degeneleanor@gmail.com or shelby.blythe@northwestern.edu with any questions or comments.
+Please contact degeneleanor@gmail.com or shelby.blythe@gmail.com with any questions or comments.
 
 # Set up
 MATLAB R2022a was used in the writing and running of all scripts. All scripts can be run after the installation of MATLAB. No auxiliary MATLAB toolboxes are required.
